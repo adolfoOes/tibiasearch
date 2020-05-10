@@ -1,0 +1,41 @@
+<div style="height: 100vh;">
+  <div fxLayout fxLayoutAlign="center center">
+    <mat-form-field class="searchPlayer" fxFlex="50">
+      <mat-label>Find Player</mat-label>
+      <input
+        #playersearch
+        matInput
+        (keyup.enter)="requestPlayerInfo(playersearch.value)"
+      />
+      <span matSuffix class="material-icons">search</span>
+    </mat-form-field>
+  </div>
+
+  <div class="character-info" fxLayout fxLayoutAlign="center center">
+    <div>
+      <mat-label>Player Name: </mat-label>
+      <mat-form-field class="searchPlayer">
+        <input
+          #name
+          matInput
+          value="{{ playername }}"
+          [disabled]="true"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-label>Level: </mat-label>
+      <mat-form-field class="searchPlayer">
+        <input
+          #level
+          matInput
+          value="{{ playerlevel }}"
+          [disabled]="true"
+        />
+      </mat-form-field>
+    </div>
+
+
+  </div>
+</div>
