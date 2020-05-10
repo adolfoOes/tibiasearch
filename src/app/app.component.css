@@ -5,3 +5,20 @@
 .searchPlayer {
   width: 100px;
 }
+
+.character-info {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.playerinfolabel{
+  font: bolder;
+  font-size: larger;
+  margin-left: 5%;
+}
+
+.playerinfodisplay{
+  font: bolder;
+  font-size: large;
+  margin-left: 5%;
+}

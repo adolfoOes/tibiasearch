@@ -15,7 +15,9 @@ export class PlayersearchComponent implements OnInit {
   API = 'https://api.tibiadata.com/v2/';
 
   characterDataLoaded = false ;
-  playername = '' ;
+
+  playername = null;
+  playerstatus = null ;
   playerlevel = null ;
 
   ngOnInit(): void {
@@ -29,10 +31,11 @@ export class PlayersearchComponent implements OnInit {
     this.http.get<Characters>(this.API + 'characters/' + playername + '.json')
       .subscribe(response => {
 
-        console.log(response.characters.data);
+        console.log(response.characters);
 
         this.playername = response.characters.data.name;
         this.playerlevel = response.characters.data.level;
+        this.playerstatus = response.characters.data.status;
 
       },
         error => console.log("Error: " + error)

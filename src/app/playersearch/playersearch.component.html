@@ -1,4 +1,4 @@
-<div style="height: 100vh;">
+<div style="height: 100vh;" class="character-info">
   <div fxLayout fxLayoutAlign="center center">
     <mat-form-field class="searchPlayer" fxFlex="50">
       <mat-label>Find Player</mat-label>
@@ -11,31 +11,39 @@
     </mat-form-field>
   </div>
 
-  <div class="character-info" fxLayout fxLayoutAlign="center center">
-    <div>
-      <mat-label>Player Name: </mat-label>
-      <mat-form-field class="searchPlayer">
-        <input
-          #name
-          matInput
-          value="{{ playername }}"
-          [disabled]="true"
-        />
-      </mat-form-field>
-    </div>
+  <div>
+    <mat-grid-list cols="2" rowHeight="6:1">
+      <mat-grid-tile fxFlex="50">
+        <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+          >Player Name:
+        </mat-label>
+        <mat-label
+          fxFlex="70"
+          fxLayoutAlign="start"
+          class="playerinfodisplay"
+          >{{ playername }}</mat-label
+        >
+      </mat-grid-tile>
 
-    <div>
-      <mat-label>Level: </mat-label>
-      <mat-form-field class="searchPlayer">
-        <input
-          #level
-          matInput
-          value="{{ playerlevel }}"
-          [disabled]="true"
-        />
-      </mat-form-field>
-    </div>
+      <mat-grid-tile fxFlex="50">
+        <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+          >Level:
+        </mat-label>
+        <mat-label fxFlex="70" fxLayoutAlign="start" class="playerinfodisplay"
+          >{{ playerlevel }}
+        </mat-label>
+      </mat-grid-tile>
 
+      <mat-grid-tile fxFlex="50">
+        <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+          >Status:
+        </mat-label>
+        <mat-label fxFlex="70" fxLayoutAlign="start" class="playerinfodisplay"
+          >{{ playerstatus }}
+        </mat-label></mat-grid-tile
+      >
 
+      <!-- <mat-grid-tile>4</mat-grid-tile> -->
+    </mat-grid-list>
   </div>
 </div>
