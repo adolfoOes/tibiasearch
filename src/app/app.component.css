@@ -9,16 +9,29 @@
 .character-info {
   width: 90%;
   margin-left: 5%;
+  margin-top: 2%;
 }
 
-.playerinfolabel{
+.playerinfolabel {
   font: bolder;
   font-size: larger;
   margin-left: 5%;
 }
 
-.playerinfodisplay{
+.playerinfodisplay {
   font: bolder;
   font-size: large;
   margin-left: 5%;
+}
+
+.toolbar {
+  background-color: gray;
+}
+
+/* .header-expansion {
+  background-color: gray;
+} */
+
+.header-tittle {
+  font-size: 28px;
 }

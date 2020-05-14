@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Characters } from '../objects-interface/Characters';
 import { Character } from '../objects-interface/Character';
 import { PlayerDeathsDataSource } from './datasource/playersearchdeaths.datasource';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+
 
 @Component({
   selector: 'tsa-playersearch',
@@ -31,12 +34,15 @@ export class PlayersearchComponent implements OnInit {
   playerachievements = null ;
   playerguild = null ;
   playerguildrank = null ;
-  dataSource = PlayerDeathsDataSource;
+  dataSource = new PlayerDeathsDataSource();
 
 
   ngOnInit(): void {
 
     console.log('teste');
+
+    //this.dataSource = new PlayerDeathsDataSource();
+
 
   }
 
@@ -59,24 +65,22 @@ export class PlayersearchComponent implements OnInit {
         this.playerguildrank = response.characters.data.guild.rank;
 
         response.characters.deaths.forEach(death => {
-
-          // console.log(death);
-
           var newDeath = {
-            // level : death.level,
+            level : death.level,
             involved : death.involved,
             reason : death.reason,
             date : death.date
           }
 
+          // console.log(newDeath);
 
-          console.log(this.dataSource);
+          // console.log(this.dataSource);
 
-          // this.dataSource.dataSource.push(newDeath)
+          this.dataSource.dataOrigem.push(newDeath)
 
         });
 
-        //
+        this.dataSource.data = this.dataSource.dataOrigem;
 
       },
         error => console.log("Error: " + error)
