@@ -1,4 +1,4 @@
-<div style="height: 100vh;" class="character-info">
+<div class="character-info">
   <div fxLayout fxLayoutAlign="center center">
     <mat-form-field class="searchPlayer" fxFlex="50">
       <mat-label>Find Player</mat-label>
@@ -13,52 +13,232 @@
 
   <div>
     <mat-accordion>
-      <mat-expansion-panel [expanded] = 'true'>
-
+      <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header class="header-expansion">
           <mat-panel-title class="header-tittle">
             Character Data
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <mat-grid-list cols="2" rowHeight="100px">
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+        <mat-grid-list cols="{{collunsGrid}}" rowHeight="60px">
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
               >Player Name:
             </mat-label>
             <mat-label
-              fxFlex="70"
+              fxFlex="{{displayFX}}"
               fxLayoutAlign="start"
               class="playerinfodisplay"
-              >{{ playername }}
+              >{{ player.name }}
             </mat-label>
           </mat-grid-tile>
 
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
               >Level:
             </mat-label>
             <mat-label
-              fxFlex="70"
+              fxFlex="{{displayFX}}"
               fxLayoutAlign="start"
               class="playerinfodisplay"
-              >{{ playerlevel }}
+              >{{ player.level }}
             </mat-label>
           </mat-grid-tile>
 
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
               >Vocation:
             </mat-label>
             <mat-label
-              fxFlex="70"
+              fxFlex="{{displayFX}}"
               fxLayoutAlign="start"
               class="playerinfodisplay"
-              >{{ playervocation }}
+              >{{ player.vocation }}
             </mat-label>
           </mat-grid-tile>
 
-          <mat-grid-tile fxFlex="50">
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
+              >World:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.world }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
+              >Status:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.status }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
+              >Account:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.accountstatus }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
+              >Residence:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.residence }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-label fxFlex="35" fxLayoutAlign="end" class="playerinfolabel"
+              >Achievements:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.achievements }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
+              >Guild:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.guild }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <mat-label fxFlex="{{labelFX}}" fxLayoutAlign="end" class="playerinfolabel"
+              >Guild Rank:
+            </mat-label>
+            <mat-label
+              fxFlex="{{displayFX}}"
+              fxLayoutAlign="start"
+              class="playerinfodisplay"
+              >{{ player.guildrank }}
+            </mat-label>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header class="header-expansion">
+          <mat-panel-title class="header-tittle">
+            Character Deaths
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-grid-list
+          cols="1"
+          *ngFor="let death of player.deaths"
+          rowHeight="50px"
+        >
+          <!-- <mat-grid-tile-header class="playerinfotiletittle">Level: {{ death.level }}</mat-grid-tile-header> -->
+
+          <mat-grid-tile fxFlex="100" fxLayoutAlign="start">
+            <mat-grid-tile-header></mat-grid-tile-header>
+
+            <mat-label fxFlex="10" fxLayoutAlign="end" class="playerinfolabel"
+              >Level:
+            </mat-label>
+            <mat-label
+              fxFlex="90"
+              fxLayoutAlign="start"
+              class="playerinfodisplayreason"
+              >{{ death.level }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile fxFlex="100" fxLayoutAlign="start" >
+            <mat-label fxFlex="10" fxLayoutAlign="end" class="playerinfolabel"
+              >Reason:
+            </mat-label>
+            <mat-label
+              fxFlex="85"
+              fxLayoutAlign="start"
+              class="playerinfodisplayreason"
+              >{{ death.reason }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile fxFlex="100" fxLayoutAlign="start" *ngFor="let killer of death.involved">
+            <!-- <mat-label hidden="{{involvedHidden}}" fxFlex="10" fxLayoutAlign="end" class="playerinfolabel"
+              >Involved:
+            </mat-label> -->
+            <mat-label
+              fxFlex="80"
+              fxLayoutAlign="start"
+              class="playerinfodisplayreason"
+              >{{ killer.name }}
+            </mat-label>
+
+            <button mat-button fxFlex="5" (click)="requestPlayerInPage(killer.name)">
+              <mat-icon>search</mat-icon></button>
+
+          </mat-grid-tile>
+        </mat-grid-list>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header class="header-expansion">
+          <mat-panel-title class="header-tittle">
+            Other Characters
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-grid-list
+          cols="{{collunsGridOther}}"
+          *ngFor="let char of player.other_characters"
+          rowHeight="70px"
+        >
+          <!-- <mat-grid-tile-header class="playerinfolabel">
+            Character: {{ char.name }}</mat-grid-tile-header
+          > -->
+
+          <mat-grid-tile>
+            <mat-label fxFlex="20" fxLayoutAlign="end" class="playerinfolabel"
+              >Name:
+            </mat-label>
+            <mat-label
+              fxFlex="80"
+              fxLayoutAlign="start"
+              class="playerinfodisplayname"
+              >{{ char.name }}
+            </mat-label>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
             <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
               >World:
             </mat-label>
@@ -66,85 +246,21 @@
               fxFlex="70"
               fxLayoutAlign="start"
               class="playerinfodisplay"
-              >{{ playerworld }}
+              >{{ char.world }}
             </mat-label>
           </mat-grid-tile>
 
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
+          <mat-grid-tile>
+            <mat-label fxFlex="50" fxLayoutAlign="end" class="playerinfolabel"
               >Status:
             </mat-label>
             <mat-label
-              fxFlex="70"
+              fxFlex="50"
               fxLayoutAlign="start"
               class="playerinfodisplay"
-              >{{ playerstatus }}
+              >{{ char.status }}
             </mat-label>
           </mat-grid-tile>
-
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
-              >Account:
-            </mat-label>
-            <mat-label
-              fxFlex="70"
-              fxLayoutAlign="start"
-              class="playerinfodisplay"
-              >{{ playeraccountstatus }}
-            </mat-label>
-          </mat-grid-tile>
-
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
-              >Residence:
-            </mat-label>
-            <mat-label
-              fxFlex="70"
-              fxLayoutAlign="start"
-              class="playerinfodisplay"
-              >{{ playerresidence }}
-            </mat-label>
-          </mat-grid-tile>
-
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
-              >Achievements:
-            </mat-label>
-            <mat-label
-              fxFlex="70"
-              fxLayoutAlign="start"
-              class="playerinfodisplay"
-              >{{ playerachievements }}
-            </mat-label>
-          </mat-grid-tile>
-
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
-              >Guild:
-            </mat-label>
-            <mat-label
-              fxFlex="70"
-              fxLayoutAlign="start"
-              class="playerinfodisplay"
-              >{{ playerguild }}
-            </mat-label>
-          </mat-grid-tile>
-
-          <mat-grid-tile fxFlex="50">
-            <mat-label fxFlex="30" fxLayoutAlign="end" class="playerinfolabel"
-              >Guild Rank:
-            </mat-label>
-            <mat-label
-              fxFlex="70"
-              fxLayoutAlign="start"
-              class="playerinfodisplay"
-              >{{ playerguildrank }}
-            </mat-label>
-          </mat-grid-tile>
-
-          <!-- <mat-table>
-
-      </mat-table> -->
         </mat-grid-list>
       </mat-expansion-panel>
     </mat-accordion>

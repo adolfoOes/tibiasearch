@@ -1,10 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Characters } from '../objects-interface/Characters';
-import { Character } from '../objects-interface/Character';
 import { PlayerDeathsDataSource } from './datasource/playersearchdeaths.datasource';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -20,71 +17,71 @@ export class PlayersearchComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+
+  @ViewChild('playersearch') playersearch: any;
   API = 'https://api.tibiadata.com/v2/';
 
   characterDataLoaded = false ;
 
-  playername = null;
-  playerstatus = null ;
-  playerlevel = null ;
-  playeraccountstatus = null ;
-  playervocation = null ;
-  playerworld = null ;
-  playerresidence = null ;
-  playerachievements = null ;
-  playerguild = null ;
-  playerguildrank = null ;
+  player : any = [];
+  collunsGrid = 2;
+  labelFX = 35;
+  displayFX = 65;
+
+  collunsGridOther = 3;
+  // involvedHidden = false;
+
   dataSource = new PlayerDeathsDataSource();
 
 
   ngOnInit(): void {
 
-    console.log('teste');
+    this.dataSource = new PlayerDeathsDataSource();
 
-    //this.dataSource = new PlayerDeathsDataSource();
-
+    if (window.innerWidth <= 700) {
+      this.collunsGrid = 1;
+    }
 
   }
 
   requestPlayerInfo(playername) {
 
+    // console.log(playername);
+
+
     this.http.get<Characters>(this.API + 'characters/' + playername + '.json')
       .subscribe(response => {
 
-        // console.log(response.characters);
+        this.player.name = response.characters.data.name;
+        this.player.level = response.characters.data.level;
+        this.player.status = response.characters.data.status;
+        this.player.vocation = response.characters.data.vocation;
+        this.player.world = response.characters.data.world;
+        this.player.residence = response.characters.data.residence;
+        this.player.achievements = response.characters.data.achievement_points;
+        this.player.accountstatus = response.characters.data.account_status;
+        this.player.guild = response.characters.data.guild.name;
+        this.player.guildrank = response.characters.data.guild.rank;
 
-        this.playername = response.characters.data.name;
-        this.playerlevel = response.characters.data.level;
-        this.playerstatus = response.characters.data.status;
-        this.playervocation = response.characters.data.vocation;
-        this.playerworld = response.characters.data.world;
-        this.playerresidence = response.characters.data.residence;
-        this.playerachievements = response.characters.data.achievement_points;
-        this.playeraccountstatus = response.characters.data.account_status;
-        this.playerguild = response.characters.data.guild.name;
-        this.playerguildrank = response.characters.data.guild.rank;
+        this.player.deaths = response.characters.deaths;
+        this.player.other_characters = response.characters.other_characters;
 
-        response.characters.deaths.forEach(death => {
-          var newDeath = {
-            level : death.level,
-            involved : death.involved,
-            reason : death.reason,
-            date : death.date
-          }
-
-          // console.log(newDeath);
-
-          // console.log(this.dataSource);
-
-          this.dataSource.dataOrigem.push(newDeath)
-
-        });
-
-        this.dataSource.data = this.dataSource.dataOrigem;
+        // console.log(response);
+        // console.log(this.player);
 
       },
         error => console.log("Error: " + error)
       )
+  }
+
+
+  requestPlayerInPage(playername){
+
+    this.playersearch.value = playername;
+    this.playersearch.nativeElement.value = playername;
+
+    this. requestPlayerInfo(playername)
+
   }
 
 

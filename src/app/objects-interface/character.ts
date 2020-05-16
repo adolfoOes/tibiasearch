@@ -6,5 +6,6 @@ export interface Character {
   account: CharacterAccountInfo;
   data: CharacterData;
   achievements: Array<string>;
-  deaths : Array<CharacterDeath>
+  deaths : Array<CharacterDeath>;
+  other_characters : Array<any>;
 }

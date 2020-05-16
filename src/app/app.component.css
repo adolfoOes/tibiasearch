@@ -1,5 +1,7 @@
+
 .topmenu-title {
   float: right;
+  color: aliceblue;
 }
 
 .searchPlayer {
@@ -7,31 +9,78 @@
 }
 
 .character-info {
-  width: 90%;
-  margin-left: 5%;
+  width: 98%;
+  margin-left: 1%;
   margin-top: 2%;
+  min-height: 100vh;
+
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  flex-grow: 1;
+  flex-basis: 300px;
+  margin: 10px;
+}
+
+.playerinfotiletittle {
+  font: bolder;
+  font-size: x-large;
+
 }
 
 .playerinfolabel {
+  text-align: right;
   font: bolder;
   font-size: larger;
-  margin-left: 5%;
+  margin-left: 2%;
+}
+
+.playerinfodisplayreason{
+  font: bolder;
+  font-size: small;
+  margin-left:2%;
 }
 
 .playerinfodisplay {
   font: bolder;
   font-size: large;
-  margin-left: 5%;
+  margin-left: 2%;
+
 }
+
+.playerinfodisplayname {
+  font: bolder;
+  font-size: large;
+  margin-left: 5%;
+
+}
+
+.playerinfodisplayname:hover{
+  color: blueviolet;
+  cursor: pointer;
+
+}
+
 
 .toolbar {
-  background-color: gray;
+  background-color: rgb(76, 3, 145);
 }
 
-/* .header-expansion {
-  background-color: gray;
-} */
+.footer{
+  margin-top: 5%;
+  background-color: rgb(76, 3, 145);
+}
 
 .header-tittle {
   font-size: 28px;
+}
+
+.text-center{
+  margin: 0;
+  color: aliceblue;
 }
